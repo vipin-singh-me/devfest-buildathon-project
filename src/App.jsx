@@ -9,6 +9,8 @@ import CreateProfile from "./pages/CreateProfile";
 import BuddyList from "./pages/BuddyList";
 import HowMatchingWorks from "./pages/HowMatchingWorks";
 import CreateTeam from "./pages/CreateTeam";
+import JoinTeam from "./pages/JoinTeam";
+import AllTeams from "./pages/AllTeams";
 
 const App = () => {
   return (
@@ -21,6 +23,10 @@ const App = () => {
         <Route path="/buddy-list" element={<BuddyList/>} />
         <Route path="/how-it-works" element={<HowMatchingWorks />} />
         <Route path="/create-team" element={<CreateTeam />} />
+        <Route path="/jointeam" element={<JoinTeam />} />
+        <Route path="/allteams" element={<AllTeams />} />
+
+        
       </Routes>
   );
 };
