@@ -160,49 +160,6 @@ const GetStarted = () => {
                         </div>
 
                         {/* sample idea cards */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div className="bg-gradient-to-r from-white to-gray-50 rounded-2xl p-5 shadow-sm hover:shadow-md transition">
-                                <div className="flex items-center justify-between">
-                                    <h4 className="font-semibold text-gray-800">Community Map</h4>
-                                    <span className="text-sm text-gray-500">3–4 devs</span>
-                                </div>
-                                <p className="text-sm text-gray-600 mt-2">
-                                    Find local events and allow RSVPs — frontend + maps + backend.
-                                </p>
-                                <div className="mt-3 flex gap-2">
-                                    <Link
-                                        to="/jointeam"
-                                        className="text-sm px-3 py-1 rounded-md bg-blue-50 text-blue-600"
-                                    >
-                                        Join
-                                    </Link>
-                                    <Link to="/how-it-works" className="text-sm px-3 py-1 rounded-md border">
-                                        Details
-                                    </Link>
-                                </div>
-                            </div>
-
-                            <div className="bg-gradient-to-r from-white to-gray-50 rounded-2xl p-5 shadow-sm hover:shadow-md transition">
-                                <div className="flex items-center justify-between">
-                                    <h4 className="font-semibold text-gray-800">Sample Idea — Digital Wall</h4>
-                                    <span className="text-sm text-gray-500">2–3 devs</span>
-                                </div>
-                                <p className="text-sm text-gray-600 mt-2">
-                                    Build a public appreciation wall with badges and leaderboard.
-                                </p>
-                                <div className="mt-3 flex gap-2">
-                                    <Link
-                                        to="/create-team"
-                                        className="text-sm px-3 py-1 rounded-md bg-blue-50 text-blue-600"
-                                    >
-                                        Join
-                                    </Link>
-                                    <Link to="/how-it-works" className="text-sm px-3 py-1 rounded-md border">
-                                        Details
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
                     </section>
 
                     {/* Right sidebar */}
@@ -259,7 +216,7 @@ const GetStarted = () => {
                                 <Link to="/buddy-list" className="w-full text-center px-4 py-2 rounded-lg border border-gray-200">
                                     Browse Buddies
                                 </Link>
-                                <Link to="/how-it-works" className="w-full text-center px-4 py-2 rounded-lg text-sm text-gray-600">
+                                <Link to="/how-matching-works" className="w-full text-center px-4 py-2 rounded-lg text-sm text-gray-600">
                                     How matching works
                                 </Link>
                             </div>

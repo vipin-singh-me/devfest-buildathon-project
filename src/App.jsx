@@ -11,6 +11,7 @@ import HowMatchingWorks from "./pages/HowMatchingWorks";
 import CreateTeam from "./pages/CreateTeam";
 import JoinTeam from "./pages/JoinTeam";
 import AllTeams from "./pages/AllTeams";
+import HowItWorks from "./pages/HowItWorks";
 
 const App = () => {
   return (
@@ -25,6 +26,8 @@ const App = () => {
         <Route path="/create-team" element={<CreateTeam />} />
         <Route path="/jointeam" element={<JoinTeam />} />
         <Route path="/allteams" element={<AllTeams />} />
+        <Route path="/how-matching-works" element={<HowItWorks />} />
+
 
         
       </Routes>
