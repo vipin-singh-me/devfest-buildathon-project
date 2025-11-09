@@ -1,17 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import back from "../assets/back.png"
 
 const Home = () => {
   const token = localStorage.getItem("token");
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 px-4">
+    <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-cover bg-center bg-no-repeat"
+    style={{
+      backgroundImage: `url(${back})`,
+    }}
+  >
       <div className="text-center max-w-2xl">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">
           Hackathon Buddy Finder
         </h1>
 
-        <p className="text-gray-600 text-base sm:text-lg mb-8">
+        <p className="text-white text-base sm:text-lg mb-8">
           Find the perfect teammates based on skills, interests, and experience.
           Build. Collaborate. Win.
         </p>
@@ -35,10 +40,7 @@ const Home = () => {
           )}
         </div>
       </div>
-
-      <footer className="mt-16 text-gray-500 text-sm">
-        © {new Date().getFullYear()} HackBuddy. All rights reserved.
-      </footer>
+      <div></div>
     </div>
   );
 };
