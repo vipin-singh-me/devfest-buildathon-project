@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const token = localStorage.getItem("token");
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 px-4">
       <div className="text-center max-w-2xl">
@@ -22,12 +24,15 @@ const Home = () => {
             Get Started
           </Link>
 
-          <Link
-            to="/login"
-            className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-50 transition"
-          >
-            Login
-          </Link>
+          {/* ✅ If NOT logged in -> show login */}
+          {!token && (
+            <Link
+              to="/login"
+              className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-50 transition"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
 

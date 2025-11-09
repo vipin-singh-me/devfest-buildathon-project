@@ -1,22 +1,38 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const handleChange = (e) => {
-    setFormData({ 
-      ...formData, 
-      [e.target.name]: e.target.value 
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login Data:", formData);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/users/login",
+        formData
+      );
+
+      // ✅ Save token
+      localStorage.setItem("token", res.data.token);
+
+      navigate("/"); // redirect → home
+    } catch (err) {
+      console.error("Login error:", err?.response?.data || err);
+    }
   };
 
   return (
@@ -27,6 +43,7 @@ const Login = () => {
         </h2>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
+          
           {/* Email */}
           <div>
             <label className="block text-gray-700 font-medium mb-1">

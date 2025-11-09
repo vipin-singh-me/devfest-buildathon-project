@@ -149,7 +149,6 @@ const BuddyCard = ({ user }) => {
       {/* Button */}
       <button
         className="w-full mt-4 px-4 py-2 rounded-lg border text-gray-800 hover:bg-gray-50 transition text-sm font-medium"
-        onClick={() => alert(`You showed interest in ${user.name}`)}
       >
         I’m Interested
       </button>

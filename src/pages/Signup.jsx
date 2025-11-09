@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,9 +17,31 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signup Data:", formData);
+
+    try {
+      const res = await fetch("http://localhost:5000/api/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return;
+      }
+
+      // ✅ Save token after signup
+      localStorage.setItem("token", data.token);
+
+      navigate("/login");
+    } catch (err) {
+      console.log("Signup error:", err);
+    }
   };
 
   return (
@@ -31,12 +55,12 @@ const Signup = () => {
           {/* Name */}
           <div>
             <label className="block text-gray-700 font-medium mb-1">
-              Full Name
+              Name
             </label>
             <input
               type="text"
               name="name"
-              placeholder="Enter your full name"
+              placeholder="Enter your name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -70,7 +94,7 @@ const Signup = () => {
             <input
               type="password"
               name="password"
-              placeholder="Create a password"
+              placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
               required
@@ -89,7 +113,6 @@ const Signup = () => {
           </button>
         </form>
 
-        {/* Footer */}
         <p className="text-center text-sm mt-4">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-600 font-medium hover:underline">

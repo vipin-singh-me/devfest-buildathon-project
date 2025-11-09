@@ -16,7 +16,6 @@ const JoinTeam = () => {
       message,
     });
 
-    alert("Join request sent! (Demo)");
     navigate("/ideas");
   };
 

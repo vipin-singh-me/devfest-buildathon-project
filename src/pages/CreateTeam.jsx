@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CreateTeam = () => {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ const CreateTeam = () => {
     openRoles: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -18,11 +21,41 @@ const CreateTeam = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Team Data:", form);
-    alert("Team created successfully (demo). Check console!");
-    navigate("/buddy-list");
+    setLoading(true);
+
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        return navigate("/login");
+      }
+
+      // Map to backend fields
+      const payload = {
+        name: form.teamName,
+        description: form.idea,
+        membersRange: "3-5 devs", // can be optional or dynamic later
+        skills: form.techStack.split(",").map((skill) => skill.trim()),
+        openRoles: form.openRoles,
+      };
+
+      const res = await axios.post(
+        "http://localhost:5000/api/teams",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      navigate("/allteams");
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -108,9 +141,10 @@ const CreateTeam = () => {
           <div className="flex flex-wrap gap-3 mt-6">
             <button
               type="submit"
+              disabled={loading}
               className="px-6 py-3 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700 transition"
             >
-              Create Team
+              {loading ? "Creating..." : "Create Team"}
             </button>
 
             <button
